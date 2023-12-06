@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Softmax:
     def __call__(self, x):
         return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
@@ -11,13 +12,20 @@ class Softmax:
     def grad(x):
         return np.ones_like(x)
 
+
 class MSELoss:
-    def __call__(self, y, y_pred):
-        self.y, self.y_pred = y, y_pred
-        return np.mean((self.y - self.y_pred) ** 2)
+    def __call__(self, y_true, y_pred):
+        """
+        :param y_true: Ground Truth
+        :param y_pred: Prediction
+        :return: Mean Squared Error
+        """
+        self.y_true, self.y_pred = y_true, y_pred
+        return np.mean((self.y_true - self.y_pred) ** 2)
 
     def grad(self):
-        return -2 * (self.y - self.y_pred)
+        return -2 * (self.y_true - self.y_pred)
+
 
 class BCELoss:
     def __call__(self, y, y_pred):
@@ -25,6 +33,7 @@ class BCELoss:
 
     def grad(self):
         pass
+
 
 class CrossEntropyLoss:
     def __call__(self, y, y_pred):
