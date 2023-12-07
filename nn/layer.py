@@ -22,7 +22,8 @@ activations = {
     'sigmoid': Sigmoid,
     'silu': SiLU,
     'leaky_relu': LeakyReLU,
-    'linear': Linear
+    'linear': Linear,
+    'softmax': Softmax
 }
 
 class Layer:

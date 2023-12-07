@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Relu:
     def __call__(self, x):
         return np.maximum(np.zeros_like(x), x)
@@ -73,6 +74,18 @@ class SiLU:
 
     def grad(self, x):
         return 1 * self.sigmoid(x) + x * self.sigmoid.grad(x)
+
+
+class Softmax:
+    def __call__(self, x):
+        return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
+
+    def __str__(self):
+        return "Softmax"
+
+    @staticmethod
+    def grad(x):
+        return np.ones_like(x)
 
 
 def main():
