@@ -17,7 +17,7 @@ from nn.dataloader import DataLoader
 
 ```python
 model = Model()
-model.add(Layer(10, 16, 'sigmoid'))
+model.add(Layer(dim_in = 10, dim_out = 16, activation = 'sigmoid'))
 model.add(Layer(16, 32, 'sigmoid'))
 model.add(Layer(32, 16, 'sigmoid'))
 model.add(Layer(16, 3, 'softmax'))
